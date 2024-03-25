@@ -26,7 +26,7 @@ const BookDetails = () => {
       <div className="flex gap-10">
 
       <div className="bg-[#F3F3F3] p-20 flex justify-center rounded-lg mb-6">
-      <img className="items-center " src={book?.image} alt="" />
+      <img className="items-center w-[800px] h-[564px]" src={book?.image} alt="" />
       </div>
 
       <div>
