@@ -13,7 +13,7 @@ const Header = () => {
 
     <div className="flex gap-12">
       <a className="font-"><NavLink to='/'>Home</NavLink></a>
-      <a><NavLink to='/listed'>Listed Books</NavLink></a>
+      <a><NavLink to='/listedbooks'>Listed Books</NavLink></a>
       <a><NavLink to='/pages'>Pages to Read</NavLink></a>
     </div>
 

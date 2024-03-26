@@ -17,7 +17,7 @@ const BookDetails = () => {
     
 
    
-    const bookData = books.find(book => book.Id === idInt);
+    const bookData = books?.find(book => book.Id === idInt);
     setBook(bookData)
 
     const storedBooksId = getStoredBook();
@@ -41,23 +41,40 @@ const BookDetails = () => {
 
   const notify1 = () => {
    
+    const getRead = getStoredBook();
+    const alreadyReaded = getRead?.find(readed => readed == book.Id)
+
+    if(alreadyReaded){
+      toast1();
+    } else {
       saveBook(idInt);
       setAddedToList(true);
       setNotify1Clicked(true);
       toast3();
+    }
+    
+     
   } 
 
   
  
   const notify2 = () => {
     
-    if(!notify1Clicked){
-      saveBooks(idInt);
-      setAddedToList(true);
-      toast2();
+    const getWish =  getStoredBooks();
+    const alreadyWished = getWish?.find(wished => wished == book.Id)
+    
+    if(alreadyWished){
+      toast4();
     } else {
-      toast1();
+      if(!notify1Clicked){
+        saveBooks(idInt);
+        setAddedToList(true);
+        toast2();
+      }  else {
+        toast1();
+      } 
     }
+   
      
   }
 

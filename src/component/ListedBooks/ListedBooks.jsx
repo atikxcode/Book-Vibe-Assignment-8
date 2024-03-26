@@ -8,38 +8,48 @@ import 'react-tabs/style/react-tabs.css';
 
 const ListedBooks = () => {
   
- const books = useLoaderData();
+  const [loaderData, setLoaderData] = useState([]);
+  useEffect(() => {
+    fetch('Books.json')
+    .then(res => res.json())
+    .then(data => {
+      setLoaderData(data)
+      // console.log(data)
+    })
+   
+  }, [])
+
+  console.log(loaderData)
+  
+//  const books = useLoaderData();
+ console.log(loaderData)
  const [selectedBooks, setSelectedBooks] = useState([]);
  const [wishedBooks, setWishedBooks] = useState([]);
 
 
  useEffect(() => {
   const storedBookIds = getStoredBook();
-  if(books?.length > 0){
-    const Booked = [];
-    for(const id of storedBookIds){
-      const book = books.find(book => book.Id == id);
-      if(book){
-        Booked.push(book)
-      }
-    }
-    setSelectedBooks(Booked);
-  }
- },[books])
+  // console.log(storedBookIds);
+  const readedBooks = loaderData?.filter(book => storedBookIds?.includes(book.Id))
+  // console.log(readedBooks)
+  // console.log(books)
+  if(readedBooks){
+    setSelectedBooks(readedBooks)
+  } 
+  // console.log(selectedBooks);
+ },[loaderData, selectedBooks])
 
  useEffect(() => {
   const storedBooksIds = getStoredBooks();
-  if(books?.length > 0){
-    const Booked = [];
-    for(const id of storedBooksIds){
-      const book = books.find(book => book.Id == id);
-      if(book){
-        Booked.push(book)
-      }
-    }
-    setWishedBooks(Booked);
-  }
- },[books])
+  // console.log(storedBookIds);
+  const readedBooks = loaderData?.filter(book => storedBooksIds?.includes(book.Id))
+  // console.log(readedBooks)
+  // console.log(books)
+  if(readedBooks){
+    setWishedBooks(readedBooks)
+  } 
+  // console.log(selectedBooks);
+ },[loaderData, selectedBooks])
 
   
 
@@ -55,11 +65,21 @@ const ListedBooks = () => {
 
     <TabPanel>
       {
-        selectedBooks.map(book => <div><h2>Hello World</h2></div>)
+        selectedBooks.map(book => (
+          <div key={book.Id}>
+            <h2>{book.author}</h2>
+          </div>
+        ))
       }
     </TabPanel>
     <TabPanel>
-      <h2>Any content 2</h2>
+    {
+        wishedBooks.map(book => (
+          <div key={book.Id}>
+            <h2>{book.author}</h2>
+          </div>
+        ))
+      }
     </TabPanel>
   </Tabs>
     </div>
