@@ -1,11 +1,16 @@
 import { useEffect, useState } from "react";
 import { Link, useLoaderData, useParams } from "react-router-dom";
-import { saveBook } from "../utility/localStorage";
+import { getStoredBook, getStoredBooks, saveBook, saveBooks } from "../utility/localStorage";
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
+
 
 const BookDetails = () => {
   const books = useLoaderData();
   const {id} = useParams();
   const [book, setBook] =  useState();
+  const [addedToList, setAddedToList] = useState(false);
+  const [notify1Clicked, setNotify1Clicked] = useState(false);
   const idInt = parseInt(id)
   useEffect(() => {
    
@@ -14,14 +19,51 @@ const BookDetails = () => {
    
     const bookData = books.find(book => book.Id === idInt);
     setBook(bookData)
+
+    const storedBooksId = getStoredBook();
+    const storedBooksIds = getStoredBooks();
+
+    if(storedBooksId.includes(idInt) || storedBooksId.includes(idInt)){
+      setAddedToList(true);
+    }
+    else{
+      setAddedToList(false);
+    }
     
        
   }, [books, id, book, idInt])
+
+  const toast1 = () => toast("Already added to the read!");
+  const toast2 = () => toast("Added to the wishlist!");
+  const toast3 = () => toast("Added to the Read!");
+  const toast4 = () => toast("Already added to the wishlist!");
+
+
+  const notify1 = () => {
+   
+      saveBook(idInt);
+      setAddedToList(true);
+      setNotify1Clicked(true);
+      toast3();
+  } 
+
   
-  const notify = () => {
-    saveBook(idInt);
+ 
+  const notify2 = () => {
     
+    if(!notify1Clicked){
+      saveBooks(idInt);
+      setAddedToList(true);
+      toast2();
+    } else {
+      toast1();
+    }
+     
   }
+
+  // const toastr = () => {
+  //   toast3();
+  // }
  
 
   
@@ -56,14 +98,14 @@ const BookDetails = () => {
       <p className="text-[#131313B3] text-[16px] mb-8">Rating: <span className="text-[#131313] text-[16px] font-semibold ml-4"> {book?.rating}</span></p>
 
       <div className="flex gap-4">
-        <Link><button onClick={notify} className="border-[1px] border-[#1313134D] text-[#131313] text-[18px] font-bold pt-[12px] pb-[12px] pr-[30px] pl-[30px] rounded-[8px]">Read</button></Link>
-        <Link><button onClick={notify} className=" text-white text-[18px] font-bold pt-[12px] pb-[12px] pr-[30px] pl-[30px] rounded-[8px] bg-[#50B1C9]">Wishlist</button></Link>
+        <button  onClick={notify1} className="border-[1px] border-[#1313134D] text-[#131313] text-[18px] font-bold pt-[12px] pb-[12px] pr-[30px] pl-[30px] rounded-[8px]">Read</button>
+        <button onClick={notify2} className=" text-white text-[18px] font-bold pt-[12px] pb-[12px] pr-[30px] pl-[30px] rounded-[8px] bg-[#50B1C9]">Wishlist</button>
         
       </div>
       </div>
 
       </div>
-
+      <ToastContainer />
     </div>
   );
 };

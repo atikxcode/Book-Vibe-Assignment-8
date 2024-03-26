@@ -1,11 +1,12 @@
 
 const ListedBook = ({book}) => {
 
+  const {author} = book;
 
   return (
     <div>
-      <h2>{book?.author}</h2>
-      <h2>{book?.review}</h2>
+      <h2>{author}</h2>
+      <h2>{review}</h2>
     </div>
   );
 };
