@@ -11,6 +11,8 @@ import Home from './component/Home/Home';
 import ListedBooks from './component/ListedBooks/ListedBooks';
 import Pages from './component/Pages/Pages';
 import BookDetails from './component/BookDetails/BookDetails';
+import TopRatedBooks from './component/TopRatedBooks/TopRatedBooks';
+import Blogs from './component/Blogs/Blogs';
 
 const router = createBrowserRouter([
   {
@@ -39,6 +41,15 @@ const router = createBrowserRouter([
         path: '/listedbooks',
         element:<ListedBooks></ListedBooks>,
         loader: () => fetch('Books.json')
+      },
+      {
+        path:'/topbooks',
+        element: <TopRatedBooks></TopRatedBooks>,
+        loader: () => fetch('Books.json')
+      },
+      {
+        path:'/blog',
+        element: <Blogs></Blogs>
       }
     ]
   },

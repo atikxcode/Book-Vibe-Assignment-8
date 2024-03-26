@@ -15,6 +15,8 @@ const Header = () => {
       <a className="font-"><NavLink to='/'>Home</NavLink></a>
       <a><NavLink to='/listedbooks'>Listed Books</NavLink></a>
       <a><NavLink to='/pages'>Pages to Read</NavLink></a>
+      <a><NavLink to='/topbooks'>Top Rated Books</NavLink></a>
+      <a><NavLink to='/blog'>Blogs</NavLink></a>
     </div>
 
     <div className="flex gap-4">
