@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { Link, useLoaderData, useParams } from "react-router-dom";
+import { saveBook } from "../utility/localStorage";
 
 const BookDetails = () => {
   const books = useLoaderData();
   const {id} = useParams();
   const [book, setBook] =  useState();
-
+  const idInt = parseInt(id)
   useEffect(() => {
-    const idInt = parseInt(id)
+   
     
 
    
@@ -15,9 +16,13 @@ const BookDetails = () => {
     setBook(bookData)
     
        
-  }, [books, id, book])
+  }, [books, id, book, idInt])
   
-   
+  const notify = () => {
+    saveBook(idInt);
+    
+  }
+ 
 
   
   return (
@@ -51,8 +56,8 @@ const BookDetails = () => {
       <p className="text-[#131313B3] text-[16px] mb-8">Rating: <span className="text-[#131313] text-[16px] font-semibold ml-4"> {book?.rating}</span></p>
 
       <div className="flex gap-4">
-        <Link><button className="border-[1px] border-[#1313134D] text-[#131313] text-[18px] font-bold pt-[12px] pb-[12px] pr-[30px] pl-[30px] rounded-[8px]">Read</button></Link>
-        <Link><button className=" text-white text-[18px] font-bold pt-[12px] pb-[12px] pr-[30px] pl-[30px] rounded-[8px] bg-[#50B1C9]">Wishlist</button></Link>
+        <Link><button onClick={notify} className="border-[1px] border-[#1313134D] text-[#131313] text-[18px] font-bold pt-[12px] pb-[12px] pr-[30px] pl-[30px] rounded-[8px]">Read</button></Link>
+        <Link><button onClick={notify} className=" text-white text-[18px] font-bold pt-[12px] pb-[12px] pr-[30px] pl-[30px] rounded-[8px] bg-[#50B1C9]">Wishlist</button></Link>
         
       </div>
       </div>
