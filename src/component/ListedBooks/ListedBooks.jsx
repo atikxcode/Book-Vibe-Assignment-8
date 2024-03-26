@@ -51,15 +51,42 @@ const ListedBooks = () => {
   // console.log(selectedBooks);
  },[loaderData])
 
-  
+
+//  sorting starts here 
+
+  const [sortOption, setSortOption] = useState('rating');
+
+  const handleSort = (books) => {
+    switch(sortOption){
+      case 'rating':
+        return [...books].sort((a,b) => b.rating - a.rating);
+      case 'pages':
+        return [...books].sort((a,b) => b.totalPages - a.totalPages);
+      case 'year':
+        return [...books].sort((a,b) => b.yearOfPublishing - a.yearOfPublishing);
+      default:
+        return books;
+    }
+  };
 
 
   
   return (
     <div className="container mx-auto">
+
       <div className="flex justify-center mb-20 bg-[#F3F3F3] p-4 rounded-lg text-[#131313] text-[28px] font-bold">
       <h2>Books</h2>
       </div>
+
+      <div className="container mx-auto flex justify-center mb-10">
+        <select value={sortOption} onChange={(e) => setSortOption(e.target.value)}>
+          <option onClick={() => handleSort(selectedBooks)} value="rating">Rating</option>
+          <option onClick={() => handleSort(selectedBooks)} value="pages">Number of pages</option>
+          <option onClick={() => handleSort(selectedBooks)} value="year">Published Year</option>
+        </select>
+        
+      </div>
+
       <Tabs>
     <TabList>
       <Tab>Read</Tab>
