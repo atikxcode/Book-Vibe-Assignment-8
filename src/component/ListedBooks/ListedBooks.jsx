@@ -59,11 +59,11 @@ const ListedBooks = () => {
   const handleSort = (books) => {
     switch(sortOption){
       case 'rating':
-        return [...books].sort((a,b) => b.rating - a.rating);
+        return [...books].sort((a,b) => a.rating - b.rating);
       case 'pages':
-        return [...books].sort((a,b) => b.totalPages - a.totalPages);
+        return [...books].sort((a,b) => a.totalPages - b.totalPages);
       case 'year':
-        return [...books].sort((a,b) => b.yearOfPublishing - a.yearOfPublishing);
+        return [...books].sort((a,b) => a.yearOfPublishing - b.yearOfPublishing);
       default:
         return books;
     }
@@ -79,10 +79,10 @@ const ListedBooks = () => {
       </div>
 
       <div className="container mx-auto flex justify-center mb-10">
-        <select value={sortOption} onChange={(e) => setSortOption(e.target.value)}>
-          <option onClick={() => handleSort(selectedBooks)} value="rating">Rating</option>
-          <option onClick={() => handleSort(selectedBooks)} value="pages">Number of pages</option>
-          <option onClick={() => handleSort(selectedBooks)} value="year">Published Year</option>
+        <select value={sortOption} onChange={(e) => setSortOption(e.target.value)} className="bg-[#23BE0A] p-4 text-white font-semibold rounded-[8px]">
+          <option className="bg-white text-black" onClick={() => handleSort(selectedBooks)} value="rating">Rating</option>
+          <option className="bg-white text-black" onClick={() => handleSort(selectedBooks)} value="pages">Number of pages</option>
+          <option className="bg-white text-black" onClick={() => handleSort(selectedBooks)} value="year">Published Year</option>
         </select>
         
       </div>
@@ -95,7 +95,7 @@ const ListedBooks = () => {
 
     <TabPanel>
       {
-        selectedBooks.map(book => (
+        handleSort(selectedBooks).map(book => (
           <div key={book.Id} className="border-[1px] border-[#F3F3F3] container mx-auto mb-8 rounded-[30px] ">
 
             <div className="flex p-4 gap-6">
@@ -159,7 +159,7 @@ const ListedBooks = () => {
     </TabPanel>
     <TabPanel>
     {
-        wishedBooks.map(book => (
+        handleSort(wishedBooks).map(book => (
           <div key={book.Id} className="border-[1px] border-[#F3F3F3] container mx-auto mb-8 rounded-[30px] ">
 
             <div className="flex p-4 gap-6">
