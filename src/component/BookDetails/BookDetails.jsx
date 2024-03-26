@@ -12,6 +12,7 @@ const BookDetails = () => {
   const [addedToList, setAddedToList] = useState(false);
   const [notify1Clicked, setNotify1Clicked] = useState(false);
   const idInt = parseInt(id)
+  
   useEffect(() => {
    
     

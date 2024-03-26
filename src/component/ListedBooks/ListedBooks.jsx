@@ -19,10 +19,10 @@ const ListedBooks = () => {
    
   }, [])
 
-  console.log(loaderData)
+ 
   
 //  const books = useLoaderData();
- console.log(loaderData)
+ 
  const [selectedBooks, setSelectedBooks] = useState([]);
  const [wishedBooks, setWishedBooks] = useState([]);
 
@@ -37,7 +37,7 @@ const ListedBooks = () => {
     setSelectedBooks(readedBooks)
   } 
   // console.log(selectedBooks);
- },[loaderData, selectedBooks])
+ },[loaderData])
 
  useEffect(() => {
   const storedBooksIds = getStoredBooks();
@@ -49,7 +49,7 @@ const ListedBooks = () => {
     setWishedBooks(readedBooks)
   } 
   // console.log(selectedBooks);
- },[loaderData, selectedBooks])
+ },[loaderData])
 
   
 
