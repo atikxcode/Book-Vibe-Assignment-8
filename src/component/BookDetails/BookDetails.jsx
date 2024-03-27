@@ -11,6 +11,7 @@ const BookDetails = () => {
   const [book, setBook] =  useState();
   const [addedToList, setAddedToList] = useState(false);
   const [notify1Clicked, setNotify1Clicked] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const idInt = parseInt(id)
   
   useEffect(() => {
@@ -18,7 +19,7 @@ const BookDetails = () => {
     
 
    
-    const bookData = books?.find(book => book.Id === idInt);
+    const bookData = books ? books.find(book => book.Id === idInt) : null;
     setBook(bookData)
 
     const storedBooksId = getStoredBook();
@@ -79,9 +80,11 @@ const BookDetails = () => {
      
   }
 
-  // const toastr = () => {
-  //   toast3();
-  // }
+  
+
+ 
+
+
  
 
   
