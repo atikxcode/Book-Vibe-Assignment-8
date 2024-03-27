@@ -2,23 +2,28 @@ import { useEffect, useState } from "react";
 import { Link, useLoaderData, useParams } from "react-router-dom";
 import { getStoredBook, getStoredBooks, saveBook, saveBooks } from "../utility/localStorage";
 import { ToastContainer, toast } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const BookDetails = () => {
+
+  
   const books = useLoaderData();
   const {id} = useParams();
+ 
   const [book, setBook] =  useState();
   const [addedToList, setAddedToList] = useState(false);
   const [notify1Clicked, setNotify1Clicked] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
   const idInt = parseInt(id)
+
+
+  
+
+
+  
   
   useEffect(() => {
-   
-    
 
-   
     const bookData = books ? books.find(book => book.Id === idInt) : null;
     setBook(bookData)
 
@@ -34,6 +39,14 @@ const BookDetails = () => {
     
        
   }, [books, id, book, idInt])
+
+
+
+
+
+
+
+
 
   const toast1 = () => toast("Already added to the read!");
   const toast2 = () => toast("Added to the wishlist!");

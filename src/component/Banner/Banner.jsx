@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-
+import bannerImg from '../../../public/assets/pngwing 1.png'
 
 const Banner = () => {
   return (
@@ -16,7 +16,7 @@ const Banner = () => {
         </div>
 
         <div>
-          <img className="w-[240px] lg:w-auto" src="/public/assets/pngwing 1.png" alt="" />
+          <img className="w-[240px] lg:w-auto" src={bannerImg} alt="" />
         </div>
 
         </div>
