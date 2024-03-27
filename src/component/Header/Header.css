@@ -6,3 +6,32 @@
   padding: 14px 20px;
   border-radius:8px;
 }
+
+.mobile-nav{
+  display:none;
+}
+
+.hamburger-menu {
+  display:none;
+}
+
+@media (max-width:576px){
+  .navbar-links {
+    display:none;
+  }
+
+  .hamburger-menu {
+    display:block;
+  }
+
+  .mobile-nav{
+    display:block;
+    position:absolute;
+    top:100%;
+    left:0;
+    width:100%;
+    background-color:#fff;
+  }
+
+
+}

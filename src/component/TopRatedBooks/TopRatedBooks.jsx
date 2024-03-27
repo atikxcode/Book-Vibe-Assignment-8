@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { useLoaderData } from 'react-router-dom';
 
 const TopRatedBooks = () => {
@@ -12,10 +12,10 @@ const TopRatedBooks = () => {
   
   return (
     <div className='container mx-auto'>
-      <div className='grid grid-cols-3 gap-8 w-full p-4'>
+      <div className='grid grid-cols-1 lg:grid-cols-3 gap-8 w-full p-4'>
       {
         topRatedBooks.map(book => 
-          <div key={book.id} className='flex justify-center border-[1px] border-[#13131326] p-4'>
+          <div key={book.id} className='flex justify-center border-[1px] border-[#13131326] p-4 rounded-xl'>
             <div className='flex flex-col items-center'>
 
             <div className='bg-[#F3F3F3] p-6'>

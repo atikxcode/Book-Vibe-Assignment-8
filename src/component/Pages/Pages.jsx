@@ -6,7 +6,7 @@ import { getStoredBook } from '../utility/localStorage';
 
 
 
-const colors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', 'red', 'pink'];
+const colors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', 'red', 'pink', 'Green', '#800080', '#FF4500', '#00CED1', '#FFD700', '#9370DB', '#32CD32', '#4169E1', '#FF69B4'];
 
 const data = [
   {
@@ -108,7 +108,7 @@ const Pages = () => {
 
   return (
     <div className='container mx-auto'>
-     <BarChart
+     <BarChart className='w-full'
       width={width}
       height={500}
       data={readList}
@@ -122,9 +122,9 @@ const Pages = () => {
      
     >
       <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="bookName" angle={angle} interval={interval} textAnchor='end' />
-      <YAxis />
-      <Bar dataKey="totalPages" fill="#8884d8" shape={<TriangleBar />} label={{ position: 'top' }}>
+      <XAxis className='text-xs' dataKey="bookName" angle={angle} interval={interval} textAnchor='end' />
+      <YAxis className='text-xs' />
+      <Bar className='h-full' dataKey="totalPages" fill="#8884d8" shape={<TriangleBar />} label={{ position: 'top' }}>
         {data.map((entry, index) => (
           <Cell key={`cell-${index}`} fill={colors[index % 20]} />
         ))}
