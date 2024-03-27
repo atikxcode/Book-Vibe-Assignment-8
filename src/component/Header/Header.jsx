@@ -31,10 +31,14 @@ const Header = () => {
             <NavLink to='/topbooks' className="nav-link" onClick={() => setMenuOpen(false)}>Top Rated Books</NavLink>
             <NavLink to='/blog' className="nav-link" onClick={() => setMenuOpen(false)}>Blogs</NavLink>
           </div>
+          <div className="flex flex-col  gap-4 font-medium lg:hidden">
+          <button className="bg-[#23BE0A] text-white py-2 px-4 rounded-lg">Sign In</button>
+          <button className="bg-[#59C6D2] text-white py-2 px-4 rounded-lg">Sign Up</button>
+        </div>
         </nav>
 
        
-        <div className="flex flex-col lg:flex-row gap-4 font-medium">
+        <div className="lg:flex flex-col lg:flex-row gap-4 font-medium hidden">
           <button className="bg-[#23BE0A] text-white py-2 px-4 rounded-lg">Sign In</button>
           <button className="bg-[#59C6D2] text-white py-2 px-4 rounded-lg">Sign Up</button>
         </div>

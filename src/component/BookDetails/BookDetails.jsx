@@ -8,14 +8,26 @@ import 'react-toastify/dist/ReactToastify.css';
 const BookDetails = () => {
 
   
-  const books = useLoaderData();
+  const [books, setBooks] = useState([]);
   const {id} = useParams();
+
+
+  useEffect(() => {
+    fetch('/Books.json')
+    .then(res => res.json())
+    .then(data => setBooks(data))
+  }, [])
+
+  console.log(books);
+
+
  
   const [book, setBook] =  useState();
   const [addedToList, setAddedToList] = useState(false);
   const [notify1Clicked, setNotify1Clicked] = useState(false);
   const idInt = parseInt(id)
 
+  
 
   
 
